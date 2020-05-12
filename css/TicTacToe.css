@@ -1,0 +1,90 @@
+body
+{
+	text-align: center;
+	font-family: 'Slabo 27px', serif;
+}
+
+input[type=text], input[type=password], button 
+{
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  text-align: center;
+}
+
+input, button
+{ 
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 4px;
+}
+
+img 
+{
+	margin-left:center;
+	margin-right: center;
+  overflow: auto;
+}
+
+ul 
+{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:black;
+}
+
+li 
+{
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+li a 
+{
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: lightblue;
+}
+
+li a:hover 
+{
+  background-color: white;
+  transition: background-color .1s;
+  color: black;
+}
+
+.footer 
+{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  color: lightblue;
+  text-align: center;
+}
+
+.header 
+{
+  padding: 30px;
+  text-align: center;
+  background: #a1cdff;
+  color: black;
+  font-size: 20px;
+}
+
+.checked 
+{
+  color: orange;
+}
