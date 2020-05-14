@@ -2,12 +2,6 @@
 <html>
 <link rel="stylesheet" href="css/TicTacToe.css"></link>
 <?php
-	/*$servername = "localhost";
-	$username = "georgi2003";
-	$password = "georgi123456";
-	$dbname = "refgistrationform";
-
-	$conn = new mysqli($servername, $username, $password, $dbname);*/
 	include './sql/database.php';
 
 	$username2 = $_POST['username2'];
