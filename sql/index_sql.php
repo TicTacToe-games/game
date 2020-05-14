@@ -13,13 +13,6 @@
 
 	$img_url = '';
 
-	$username2 = $_POST['username2'];
-	if($username2 != '')
-	{
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-	}
-
 	if($username2 !== '' && $username !== '' && $password !== '')
 	{
 		if ($conn->connect_error) 
@@ -28,7 +21,7 @@
 		}
 
 		$sql = "SELECT id, `username`, `password` FROM `account` WHERE `username`= '$username' AND `password` = '$password'";
-		$sql2 = "SELECT `username` FROM `account` WHERE `username`= '$username2'";		
+		$sql2 = "SELECT id, `username` FROM `account` WHERE `username`= '$username2'";		
 
 		$result = $conn->query($sql);
 		$result2 = $conn->query($sql2);
@@ -43,9 +36,40 @@
 		    	}
 
 		        echo '<button><a style="text-decoration: none;" href="game.php">Вход</a></button>';
-		        echo "<h1>Добре дошли: <i>" . $row["username"] . "<br></i></h1>";	       
+		        echo "<h1>Добре дошли: <i>" . $row["username"] . "<br></i></h1>";
+		        $user1 = $row["id"];	       
 		        echo '<br>';
+		        /*---*/
+		        $sql_user = "UPDATE `users_game` SET `user1`= $user1 WHERE 1";
+
+				if ($conn->query($sql_user) === TRUE) 
+				{
+				  echo "";
+				} 
+				else 
+				{
+				  echo "Error: " . $sql_user . "<br>" . $conn->error;
+				}
+				/*---*/
 		        $img_url = $row["id"];
+		    }
+
+		    /*---*/
+		    while($row = $result2->fetch_assoc()) 
+		    {
+		        $user2 = $row["id"];	       		      
+		        /*---*/
+		        $sql_user = "UPDATE `users_game` SET `user2`= $user2 WHERE 1";
+
+				if ($conn->query($sql_user) === TRUE) 
+				{
+				  echo "";
+				} 
+				else 
+				{
+				  echo "Error: " . $sql_user . "<br>" . $conn->error;
+				}
+				/*---*/
 		    }
 		} 
 		else 
