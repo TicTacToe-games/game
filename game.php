@@ -14,6 +14,25 @@
 	$dbname = "refgistrationform";
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	$user1 = '';
+	$user2 = '';
+
+	$sql = "SELECT * FROM `users_game` WHERE 1";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) 
+	{
+	  while($row = $result->fetch_assoc()) 
+	  {
+	   	$user1 = $row["user1"];
+	   	$user2 = $row["user2"];
+	  }
+	} 
+	else 
+	{
+	  echo "0 results";
+	}
 ?> 
 	<div class="header">
 		<h1>МОРСКИ ШАХ</h1>
@@ -23,15 +42,7 @@
 		<li style="float: right;"><a href="account.php">Профил</a></li>
 		<li style="float: right;"><a href="rating.php">Рейтинг</a></li>
 		<li style="float: right;"><a href="info.php">Информация</a></li>
-	</ul> 
-	
-<form method="POST"> 	  	
-		<br>		  	 
-	   	Х: <input type="password" name="id1" placeholder="Играч 1 id">		
-	 	<p style="float: right;">
-	 	O:<input type="password" name="id2" style="float: right;" placeholder="Играч 2 id"></p>	
-	 	<input type="submit" name="submit">			 		 	 	 		 	
-</form>	
+	</ul> 	
 
     <div class="container" id="main">
 	    <span id="turn">Играй</span>   
@@ -66,15 +77,13 @@
      		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br1;    		
      		<?php
      		
-			$id1 = $_POST['id1'];
-			$id2 = $_POST['id2'];
 			// Check connection
 			if ($conn->connect_error) 
 			{
 			    die("Connection failed: " . $conn->connect_error);
 			}
 
-			$sql = "UPDATE `result` SET `win`= `win` + 1 WHERE id=$id1";
+			$sql = "UPDATE `result` SET `win`= `win` + 1 WHERE id = $user1";
 
 			if ($conn->query($sql) === TRUE) 
 			{
