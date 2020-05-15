@@ -74,7 +74,7 @@
 		} 
 		else 
 		{
-		    echo "0 results";		    
+		    echo "";		    
 		}
 	}
 	else
@@ -111,13 +111,15 @@
 <img id="myImg" style="width: 150px; height:150px" alt="<?php echo $username ?>" src="<?php echo $img ?>">
 
 <?php
-	for($i = 0; $i <= 10; $i++)
+	if($username2 != '')
 	{
-		echo "<br>";
+		for($i = 0; $i <= 13; $i++)
+		{
+			echo "<br>";
+		}
 	}
 ?>
 
-<br><br><br>
 <div id="myModal" class="modal">
   	<span class="close">&times;</span>
   	<img class="modal-content" id="img01">
