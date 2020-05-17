@@ -44,7 +44,10 @@
 				  die("Connection failed: " . $conn->connect_error);
 				}
 
-				$sql = "SELECT * FROM `account` WHERE 1";
+				include './sql/select.php';
+				$Select = new Select('*', 'account', '1');
+      			$sql = $Select->SELECT_db();
+
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) 
@@ -71,10 +74,12 @@
  	 	<br>
  	 	<script src="js/dropdown_index.js"></script>
 </form>
+
 <button><a style="text-decoration: none; color: black;" href="http://localhost/Tic%20Tac%20Toe/registration.php">Регистрация</a></button><br><br>
 <?php
 	include 'sql/index_sql.php';	
 ?>
+
 <footer>		   	 
     <div class="footer">
  	 	<p>Имейл за връзка: tictactoe047@gmail.com</p>
