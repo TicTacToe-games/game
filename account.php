@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>  
 <html>	
 <link rel="stylesheet" href="css/TicTacToe.css"></link>
+<link rel="stylesheet" href="css/navigation_bar.css"></link>
 <head>	
 	<div class="header">
 	<h1>Профил</h1>
@@ -34,7 +35,7 @@
 	<?php
 		include 'sql/account_sql.php';
 	?>
-
+	
 	<?php
 		$servername = "localhost";
 		$username = "georgi2003";
@@ -63,7 +64,7 @@
 
 	<link rel="stylesheet" href="css/img.css"></link>
 	<img id="myImg" style="width: 150px; height:150px" src="<?php echo $img ?>">
-	<br><br><br>
+	<br>
 	<div id="myModal" class="modal">
 		<span class="close">&times;</span>
 		<img class="modal-content" id="img01">
@@ -77,32 +78,32 @@
 	</div>
 
 	<div class="main" id="section2">
-	</div>
+	</div><br><br>
 	<h1>Aктуализация на профила</h1>
 	<form method="POST"> 
-		<br>
+		
 		</h1>
-		<input type="text" name="id" placeholder="Въведете id" required>
+		<input type="text" name="id" placeholder="id" required>
 		<br>
-		<input type="text" name="name" placeholder="Въведете име">
+		<input type="text" name="name" placeholder="Име">
 		<br>
-		<input type="text" name="last_name" placeholder="Въведете фамилия">
+		<input type="text" name="last_name" placeholder="Фамилия">
 		<br>
 		<input type="radio" name="gender" value="Мъж">Мъж
 		<input type="radio" name="gender" value="Жена">Жена
 		<input type="radio" name="gender" value="Друг">Друг
 		<br>
-		<input type="number" name="year_birth" style=" width: 25%;" placeholder="Въведете година на раждане">
+		<input type="number" name="year_birth" style=" width: 25%;" placeholder="Година на раждане">
 		<br>
-		<input type="number" name="phone" style=" width: 25%;" placeholder="Въведете телефон">
+		<input type="number" name="phone" style=" width: 25%;" placeholder="Телефон">
 		<br>
-		<input type="text" name="email" placeholder="Въведете имейл">
+		<input type="text" name="email" placeholder="Имейл">
 		<br>
-		<input type="text" name="url" placeholder="Въведете url на снимка">
+		<input type="text" name="url" placeholder="url на снимка">
 		<br>
-		<input type="text" name="username" placeholder="Въведете потребителско име">
+		<input type="text" name="username" placeholder="Потребителско име">
 		<br>
-		<input type="password" name="password1" placeholder="Въведете парола"> 	
+		<input type="password" name="password1" placeholder="Парола"> 	
 		<br>
 		<input type="password" name="password2" placeholder="Повтори паролата">
 		<br>
@@ -115,58 +116,61 @@
 	
 <?php
 	$id = $_POST['id'];
-	$name = $_POST['name'];
-	$last_name = $_POST['last_name'];
-	$gender = $_POST['gender'];
-	$year_birth = $_POST['year_birth'];
-	$phone = $_POST['phone'];
-	$email = $_POST['email'];
-	$url = $_POST['url'];
-	$username = $_POST['username'];
-	$password1 = md5($_POST['password1']);
-	$password2 = md5($_POST['password2']);
-
-	if($password1 == $password2)
+	if($id!='')
 	{
-		$sql = "UPDATE `user_information` SET `first_name` = '$name',`last_name` = '$last_name',`gender` = '$gender',`date_birth`= $year_birth WHERE id = $id";
-		$sql2 = "UPDATE `contacts` SET `phone` = $phone,`email` = '$email' WHERE id = $id";
-		$sql3 = "UPDATE `account` SET `username` = $username,`password`= $password1 WHERE id = $id";
-		$sql4 = "UPDATE `result` SET `url`= '$url' WHERE id = $id";
+		$name = $_POST['name'];
+		$last_name = $_POST['last_name'];
+		$gender = $_POST['gender'];
+		$year_birth = $_POST['year_birth'];
+		$phone = $_POST['phone'];
+		$email = $_POST['email'];
+		$url = $_POST['url'];
+		$username = $_POST['username'];
+		$password1 = md5($_POST['password1']);
+		$password2 = md5($_POST['password2']);
 
-		if ($conn->query($sql) === TRUE) 
+		if($password1 == $password2)
 		{
-		    echo "Record updated successfully";
-		} 
-		else 
-		{
-		    echo "Error updating record: " . $conn->error;
-		}
+			$sql = "UPDATE `user_information` SET `first_name` = '$name',`last_name` = '$last_name',`gender` = '$gender',`date_birth`= $year_birth WHERE id = $id";
+			$sql2 = "UPDATE `contacts` SET `phone` = $phone,`email` = '$email' WHERE id = $id";
+			$sql3 = "UPDATE `account` SET `username` = $username,`password`= $password1 WHERE id = $id";
+			$sql4 = "UPDATE `result` SET `url`= '$url' WHERE id = $id";
 
-		if ($conn->query($sql2) === TRUE) 
-		{
-		    echo "Record updated successfully";
-		} 
-		else 
-		{
-		    echo "Error updating record: " . $conn->error;
-		}
+			if ($conn->query($sql) === TRUE) 
+			{
+			    echo "Record updated successfully";
+			} 
+			else 
+			{
+			    echo "Error updating record: " . $conn->error;
+			}
 
-		if ($conn->query($sql3) === TRUE) 
-		{
-		    echo "Record updated successfully";
-		} 
-		else 
-		{
-		    echo "Error updating record: " . $conn->error;
-		}
+			if ($conn->query($sql2) === TRUE) 
+			{
+			    echo "Record updated successfully";
+			} 
+			else 
+			{
+			    echo "Error updating record: " . $conn->error;
+			}
 
-		if ($conn->query($sql4) === TRUE) 
-		{
-			echo "Record updated successfully";
-		} 
-		else 
-		{
-		    echo "Error updating record: " . $conn->error;
+			if ($conn->query($sql3) === TRUE) 
+			{
+			    echo "Record updated successfully";
+			} 
+			else 
+			{
+			    echo "Error updating record: " . $conn->error;
+			}
+
+			if ($conn->query($sql4) === TRUE) 
+			{
+				echo "Record updated successfully";
+			} 
+			else 
+			{
+			    echo "Error updating record: " . $conn->error;
+			}
 		}
 	}
 ?>

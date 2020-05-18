@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/TicTacToe.css"></link>
+	<link rel="stylesheet" href="css/navigation_bar.css"></link>
 </head>
 <body>
 <form method="POST"> 
@@ -51,7 +52,11 @@
 <?php
 	include 'sql/registration_sql.php';
 ?>
-
+<footer>		   	 
+    <div class="footer">
+ 	 	<p>Имейл за връзка: tictactoe047@gmail.com</p>
+	</div>
+</footer>
 </body>
 </html>
 

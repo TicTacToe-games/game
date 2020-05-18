@@ -3,7 +3,7 @@
 <head>
 	<link rel="stylesheet" href="css/TicTacToe.css"></link>
 	<link rel="stylesheet" href="css/dropdown.css"></link>
-
+	<link rel="stylesheet" href="css/navigation_bar.css"></link>
 </head>
 
 <body>

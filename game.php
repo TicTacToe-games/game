@@ -18,7 +18,10 @@
 	$user1 = '';
 	$user2 = '';
 
-	$sql = "SELECT * FROM `users_game` WHERE 1";
+	include './sql/select.php';
+	$Select = new Select('*', 'users_game', '1');
+    $sql = $Select->SELECT_db();
+
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) 

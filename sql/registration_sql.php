@@ -9,7 +9,6 @@
 		$year_birth = $_POST['year_birth'];
 		$phone = $_POST['phone'];
 		$email = $_POST['email'];
-		//$id = $_POST['id'];
 		$username = $_POST['username'];
 		$password1 = md5($_POST['password1']);
 		$password2 = md5($_POST['password2']);

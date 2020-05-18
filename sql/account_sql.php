@@ -24,7 +24,7 @@
 	{
 	    while($row = $result->fetch_assoc()) 
 	    {
-	        echo "<h1>Добре дошли: <i>" . $row["username"] . "<br></i></h1>";
+	        echo "<br><br><h1>Добре дошли: <i>" . $row["username"] . "<br></i></h1>";
 	       
 			$Select2 = new Select('*', 'account', "`username`= '$username' AND `password` = '$password'");
       		$sql1 = $Select2->SELECT_JOIN('user_information');	        

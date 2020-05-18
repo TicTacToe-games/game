@@ -93,7 +93,8 @@
     while($row = $result2->fetch_assoc()) 
     {  
       $win_game = $row["MAX(`win`)"];
-      echo '<br><h1>Най-добър играч</h1>';            
+      echo '<br><h1>Най-добър играч</h1>';   
+             
       $sql3 = "SELECT * FROM `result` JOIN `user_information` ON `result`.`id` = `user_information`.`id` WHERE `win` = $win_game";
       $result3 = $conn->query($sql3); 
       while($row = $result3->fetch_assoc()) 
@@ -105,7 +106,7 @@
   } 
   else 
   {
-      echo "0 results";
+    echo "0 results";
   }
   $conn->close();
 ?>
