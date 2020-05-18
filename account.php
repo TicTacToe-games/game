@@ -16,7 +16,7 @@
 </head>
 <body>
  	<br>
-	<img src="img/avatar.jpg" style="width: 150px; height:150px"> 
+	<img src="img/avatar_accaunt.gif" style="width: 150px; height:150px"> 
 	<br>
 	<form method="POST" action="#section"> 	  			
 		<h1>			
@@ -63,7 +63,13 @@
 	?>	 
 
 	<link rel="stylesheet" href="css/img.css"></link>
-	<img id="myImg" style="width: 150px; height:150px" src="<?php echo $img ?>">
+	<?php
+		if($_POST['username'] != '')
+		{
+			echo '<img id="myImg" style="width: 150px; height:150px" src="' . $img . '">';
+		}
+	?>
+
 	<br>
 	<div id="myModal" class="modal">
 		<span class="close">&times;</span>
@@ -107,7 +113,7 @@
 		<br>
 		<input type="password" name="password2" placeholder="Повтори паролата">
 		<br>
-		<input type="submit" name="submit">
+		<input type="submit" name="submit" href="./index.php">
 		<br>
  		<button style="width: 7.5%; text-align: center;"><a style="text-decoration: none; color: black;" href="./index.php"> Вход </a></button>
 	 	<br><br><br>

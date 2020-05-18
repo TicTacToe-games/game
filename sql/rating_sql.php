@@ -8,7 +8,7 @@
 
   function Rating_res($result)
   {
-    if($result > 3 && $result <= 5)
+    if($result > 3 && $result <= 6)
     {
       return '
         <span class="fa fa-star checked"></span>
@@ -18,7 +18,7 @@
         <span class="fa fa-star"></span>
       ';
     }
-    else if($result > 5 && $result <= 10)
+    else if($result > 6 && $result <= 10)
     {
       return '
         <span class="fa fa-star checked"></span>
