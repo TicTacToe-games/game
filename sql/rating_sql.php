@@ -84,7 +84,7 @@
     echo "<h1>Рейтинг на потребителите</h1>";
     while($row = $result->fetch_assoc()) 
     {         
-      echo '<h2>' . $row["username"] . '<br>' . ' Победи: ' . $row["win"] . '<br>' . ' Рейтинг: ' . Rating_res($row["win"]) . "<br>" . '</h2>';        
+      echo '<h2>' . $row["username"] . '<br>' . ' Победи: ' . $row["win"] . '<br>' . ' Рейтинг: ' . Rating_res($row["win"]) . "<br>" . '</h2>';
     }
   } 
 
