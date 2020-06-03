@@ -67,7 +67,7 @@
     
  	var br1 = 0;
  	var br2 = 0;
-
+ 	<?php $br1 = 0; $br2 = 0; ?>
  	function selectWinnerBoxes(b1,b2,b3)
  	{
      	b1.classList.add("win");
@@ -77,32 +77,47 @@
      	if(b1.innerHTML === "X")
      	{
      		br1++
-     		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br1;    		
-     		<?php     		
-				if ($conn->connect_error) 
-				{
-				    die("Connection failed: " . $conn->connect_error);
-				}
-
-				$sql = "UPDATE `result` SET `win`= `win` + 1 WHERE id = $user1";
-
-				if ($conn->query($sql) === TRUE) 
-				{
-				 //   echo "Record updated successfully";
-				} 
-				else 
-				{
-				    echo "Error updating record: " . $conn->error;
-				}
-
-				$conn->close();
-			?>		    		
+     		<?php $br1++; ?>
+     		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br1;	    		
      	}
      	else if(b1.innerHTML === "O")
      	{
      		br2++
-     		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br2;     		    		
+     		<?php $br2++; ?>
+     		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br2;	
      	}
+     	
+     	<?php     		
+     		$res = $user1;
+     		if($br1 > $br2)
+	     	{
+	     		$res = $user1; 
+	     	}
+	     	else if($br1 < $br2)
+     		{
+     			$res = $user2;
+     		}
+
+			if ($conn->connect_error) 
+			{
+			    die("Connection failed: " . $conn->connect_error);
+			}
+
+			$sql = "UPDATE `result` SET `win`= `win` + 1 WHERE id = $res";
+
+			if ($conn->query($sql) === TRUE) 
+			{
+			 //   echo "Record updated successfully";
+			} 
+			else 
+			{
+			    echo "Error updating record: " . $conn->error;
+			}
+
+			$conn->close();
+		?>		    
+     	
+
      	turn.style.fontSize = "40px";
  	}
 

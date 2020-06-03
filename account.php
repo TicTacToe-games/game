@@ -31,11 +31,17 @@
 	 	<input type="submit" name="submit">
  	 	<br><br>	 	 	
 </form>
-		
-	<?php
+
+	<div class="main" id="section"></div>
+	<?php		
 		include 'sql/account_sql.php';
+		if($log == 'true')
+		{
+			include './login.php';
+		}		
 	?>
-	
+
+	<?php if($log == 'true') : ?>
 	<?php
 		$servername = "localhost";
 		$username = "georgi2003";
@@ -44,29 +50,12 @@
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 	?>
-	<?php 
-		$img = '';
-		$sql = "SELECT * FROM `result` WHERE id = $img_url";
-		$result = $conn->query($sql);
-
-		if ($result->num_rows > 0) 
-		{
-		    while($row = $result->fetch_assoc()) 
-		    {	        
-		        $img = $row["url"];
-		    }
-		} 
-		else
-		{
-		    echo "0 results";
-		}
-	?>	 
 
 	<link rel="stylesheet" href="css/img.css"></link>
 	<?php
 		if($_POST['username'] != '')
 		{
-			echo '<img id="myImg" style="width: 150px; height:150px" src="' . $img . '">';
+			echo '<img id="myImg" style="width: 150px; height:150px" src="' . $img_url . '">';
 		}
 	?>
 
@@ -84,10 +73,10 @@
 	</div>
 
 	<div class="main" id="section2">
+	
 	</div><br><br>
 	<h1>Aктуализация на профила</h1>
-	<form method="POST"> 
-		
+	<form method="POST"> 		
 		</h1>
 		<input type="text" name="id" placeholder="id" required>
 		<br>
@@ -118,8 +107,8 @@
  		<button style="width: 7.5%; text-align: center;"><a style="text-decoration: none; color: black;" href="./index.php"> Вход </a></button>
 	 	<br><br><br>
 	</form>
+	<?php endif ?>
 
-	
 <?php
 	$id = $_POST['id'];
 	if($id!='')
@@ -139,8 +128,7 @@
 		{
 			$sql = "UPDATE `user_information` SET `first_name` = '$name',`last_name` = '$last_name',`gender` = '$gender',`date_birth`= $year_birth WHERE id = $id";
 			$sql2 = "UPDATE `contacts` SET `phone` = $phone,`email` = '$email' WHERE id = $id";
-			$sql3 = "UPDATE `account` SET `username` = $username,`password`= $password1 WHERE id = $id";
-			$sql4 = "UPDATE `result` SET `url`= '$url' WHERE id = $id";
+			$sql3 = "UPDATE `account` SET `username` = $username, `password`= $password1 WHERE id = $id";			
 
 			if ($conn->query($sql) === TRUE) 
 			{
@@ -169,6 +157,7 @@
 			    echo "Error updating record: " . $conn->error;
 			}
 
+			$sql4 = "UPDATE `account` SET `url` = '$url' WHERE id = $id";
 			if ($conn->query($sql4) === TRUE) 
 			{
 				echo "Record updated successfully";
@@ -180,6 +169,7 @@
 		}
 	}
 ?>
+
 
 </body>
 	

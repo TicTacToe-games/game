@@ -11,8 +11,6 @@
 		$password = md5($_POST['password']);
 	}
 
-	$img_url = '';
-
 	if($username2 !== '' && $username !== '' && $password !== '')
 	{
 		if ($conn->connect_error) 
@@ -20,8 +18,8 @@
 		    die("Connection failed: " . $conn->connect_error);
 		}
 
-		$sql = "SELECT id, `username`, `password` FROM `account` WHERE `username`= '$username' AND `password` = '$password'";
-		$sql2 = "SELECT id, `username` FROM `account` WHERE `username`= '$username2'";		
+		$sql = "SELECT * FROM `account` WHERE `username` = '$username' AND `password` = '$password'";
+		$sql2 = "SELECT * FROM `account` WHERE `username` = '$username2'";		
 
 		$result = $conn->query($sql);
 		$result2 = $conn->query($sql2);
@@ -52,7 +50,7 @@
 				  echo "Error: " . $sql_user . "<br>" . $conn->error;
 				}
 				/*---*/
-		        $img_url = $row["id"];
+		        $img = $row["url"];
 		    }
 
 		    /*---*/
@@ -83,27 +81,6 @@
 		echo 'Не сте въвели нищо!!!<br><br><br>';
 	}
 ?>
-
-<?php 	
-	$sql = "SELECT * FROM `result` WHERE id = $img_url";
-	$result = $conn->query($sql);
-
-	if($username2 != '')
-	{
-		if ($result->num_rows > 0) 
-		{
-		    while($row = $result->fetch_assoc()) 
-		    {	        
-		        $img = $row["url"];
-		    }
-		} 
-		else 
-		{
-		    echo "0 results";
-		}
-	}
-	$conn->close();
-?>	 
 
 <div class="main" id="section2">
 </div>

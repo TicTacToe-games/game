@@ -41,7 +41,7 @@
 	<br>
 	<input type="password" name="password1" placeholder=" Въведете парола" required> 	
 	<br>
-	<input type="password" name="password2" placeholder="Повтори паролата" required>
+	<input type="password" name="password2" placeholder="Повторете паролата" required>
 	<br>
 	<input type="submit" name="submit">
  	<br>
