@@ -8,6 +8,8 @@
 </head>
 <body> 
 <?php
+	session_start();
+
 	$servername = "localhost";
 	$username = "georgi2003";
 	$password = "georgi123456";
@@ -15,8 +17,8 @@
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
-	$user1 = '';
-	$user2 = '';
+	$user1 = $_SESSION["user1"];
+	$user2 = $_SESSION["user2"];
 
 	include './sql/select.php';
 	$Select = new Select('*', 'users_game', '1');
