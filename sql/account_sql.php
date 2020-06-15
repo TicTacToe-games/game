@@ -6,8 +6,8 @@
 	if($_POST['username'] != '')
 	{	
 		$log = 'true';
-		include './login.php';
 		
+		session_start();
 		$username = $_SESSION['username'];
 		$password = $_SESSION["password"];
 		

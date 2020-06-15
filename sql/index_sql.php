@@ -39,36 +39,13 @@
 		        $_SESSION["user1"] = $row["id"];	       
 		        echo '<br>';
 		        /*---*/
-
-		       /* $sql_user = "UPDATE `users_game` SET `user1`= $user1 WHERE 1";
-
-				if ($conn->query($sql_user) === TRUE) 
-				{
-				  echo "";
-				} 
-				else 
-				{
-				  echo "Error: " . $sql_user . "<br>" . $conn->error;
-				}*/
-				/*---*/
 		        $img = $row["url"];
 		    }
 
 		    /*---*/
 		    while($row = $result2->fetch_assoc()) 
 		    {
-		        $_SESSION["user2"] = $row["id"];	       		      
-		        /*---*/
-		        /*$sql_user = "UPDATE `users_game` SET `user2`= $user2 WHERE 1";
-
-				if ($conn->query($sql_user) === TRUE) 
-				{
-				  echo "";
-				} 
-				else 
-				{
-				  echo "Error: " . $sql_user . "<br>" . $conn->error;
-				}
+		        $_SESSION["user2"] = $row["id"];	       		      		        
 				/*---*/
 		    }
 		} 

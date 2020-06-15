@@ -21,7 +21,7 @@
 		$servername = "localhost";
 		$username = "georgi2003";
 		$password = "georgi123456";
-		$dbname = "refgistrationform";
+		$dbname = "tic_tac_toe";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 	?>	

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	if($_POST['username'] != '' && $log == 'true')
 	{
 		$_SESSION["username"] = $_POST['username'];

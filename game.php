@@ -9,35 +9,10 @@
 <body> 
 <?php
 	session_start();
-
-	$servername = "localhost";
-	$username = "georgi2003";
-	$password = "georgi123456";
-	$dbname = "refgistrationform";
-
-	$conn = new mysqli($servername, $username, $password, $dbname);
-
 	$user1 = $_SESSION["user1"];
 	$user2 = $_SESSION["user2"];
 
-	include './sql/select.php';
-	$Select = new Select('*', 'users_game', '1');
-    $sql = $Select->SELECT_db();
-
-	$result = $conn->query($sql);
-
-	if ($result->num_rows > 0) 
-	{
-	  while($row = $result->fetch_assoc()) 
-	  {
-	   	$user1 = $row["user1"];
-	   	$user2 = $row["user2"];
-	  }
-	} 
-	else 
-	{
-	  echo "0 results";
-	}
+	include './sql/select.php';	
 ?> 
 	<div class="header">
 		<h1>МОРСКИ ШАХ</h1>
@@ -63,7 +38,7 @@
     </div>
 
     <button onclick="replay()">Играй пак</button>
-    
+ 
 <script>
     var turn = document.getElementById("turn"), boxes = document.querySelectorAll("#main div"), X_or_O = 0;	
     
@@ -78,48 +53,21 @@
 
      	if(b1.innerHTML === "X")
      	{
-     		br1++
+     		br1++;
      		<?php $br1++; ?>
      		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br1;	    		
      	}
      	else if(b1.innerHTML === "O")
      	{
-     		br2++
+     		br2++;
      		<?php $br2++; ?>
      		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br2;	
      	}
      	
-     	<?php     		
-     		$res = $user1;
-     		if($br1 > $br2)
-	     	{
-	     		$res = $user1; 
-	     	}
-	     	else if($br1 < $br2)
-     		{
-     			$res = $user2;
-     		}
-
-			if ($conn->connect_error) 
-			{
-			    die("Connection failed: " . $conn->connect_error);
-			}
-
-			$sql = "UPDATE `result` SET `win`= `win` + 1 WHERE id = $res";
-
-			if ($conn->query($sql) === TRUE) 
-			{
-			 //   echo "Record updated successfully";
-			} 
-			else 
-			{
-			    echo "Error updating record: " . $conn->error;
-			}
-
-			$conn->close();
+     	<?php 	
+     		include 'sql/result.php';    		
 		?>		    
      	
-
      	turn.style.fontSize = "40px";
  	}
 
@@ -222,7 +170,7 @@
 <br> <br> <br>
 <footer>		   	 
     <div class="footer">
- 	 	<p>Имейл за връзка: tictactoe047@gmail.com</p>	 		 	
+ 	 	<p>Имейл за връзка: tictactoe047@gmail.com</p>  		 	
 	</div>
 </footer>
 <script src="js/messages.js"></script>

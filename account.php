@@ -1,8 +1,11 @@
 <!DOCTYPE HTML>  
-<html>	
-<link rel="stylesheet" href="css/TicTacToe.css"></link>
-<link rel="stylesheet" href="css/navigation_bar.css"></link>
+<html>
 <head>	
+	<link rel="stylesheet" href="css/TicTacToe.css"></link>
+	<link rel="stylesheet" href="css/navigation_bar.css"></link>
+	<link rel="stylesheet" href="css/img.css"></link>
+</head>
+<body>	
 	<div class="header">
 	<h1>Профил</h1>
 	</div>  
@@ -13,8 +16,8 @@
 		<li style="float: right;"><a href="rating.php" >Рейтинг</a></li>
 		<li style="float: right;"><a href="info.php" >Информация</a></li>			
 	</ul>
-</head>
-<body>
+
+
  	<br>
 	<img src="img/avatar_accaunt.gif" style="width: 150px; height:150px"> 
 	<br>
@@ -34,11 +37,7 @@
 
 	<div class="main" id="section"></div>
 	<?php		
-		include 'sql/account_sql.php';
-		if($log == 'true')
-		{
-			include './login.php';
-		}		
+		include 'sql/account_sql.php';			
 	?>
 
 	<?php if($log == 'true') : ?>
@@ -46,12 +45,11 @@
 		$servername = "localhost";
 		$username = "georgi2003";
 		$password = "georgi123456";
-		$dbname = "refgistrationform";
+		$dbname = "tic_tac_toe";
 
 		$conn = new mysqli($servername, $username, $password, $dbname);
 	?>
 
-	<link rel="stylesheet" href="css/img.css"></link>
 	<?php
 		if($_POST['username'] != '')
 		{
