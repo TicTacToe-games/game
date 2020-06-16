@@ -7,11 +7,12 @@
 }
 </style>
 <head>
+  <title>Морски шах</title>
   <link rel="stylesheet" href="css/TicTacToe.css"></link>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/navigation_bar.css"></link>
-	<title>
-	</title>
+  <link rel="stylesheet" href="css/img.css"></link>
+  <link href="./img/icon.jpg" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>
 <div class="header">
@@ -29,7 +30,6 @@
   include 'sql/rating_sql.php';
 ?>
 
-<link rel="stylesheet" href="css/img.css"></link>
 <img id="myImg" style="width: 150px; height:150px" src="<?php echo $img_url ?>">
 <br><br><br>
 <div id="myModal" class="modal">

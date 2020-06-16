@@ -1,8 +1,15 @@
 <!DOCTYPE HTML>  
 <html>
-<link rel="stylesheet" href="css/TicTacToe.css"></link>
 <?php
 	session_start();
+
+	$servername = "localhost";
+	$username = "georgi2003";
+	$password = "georgi123456";
+	$dbname = "tic_tac_toe";
+
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	
 	include './sql/database.php';
 
 	$username2 = $_POST['username2'];

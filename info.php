@@ -1,11 +1,9 @@
  <!DOCTYPE html>
 <html>
 <head>
+  <title>Морски шах</title>
   <link rel="stylesheet" href="css/TicTacToe.css"></link>
-
-	<title>
-		
-	</title>
+  <link href="./img/icon.jpg" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>
 <div class="header">

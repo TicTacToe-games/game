@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>  
 <html>	
 <head>
+	<title>Морски шах</title>
 	<link rel="stylesheet" href="css/TicTacToe.css"></link>
 	<link rel="stylesheet" href="css/dropdown.css"></link>
 	<link rel="stylesheet" href="css/navigation_bar.css"></link>
+	<link href="./img/icon.jpg" rel="shortcut icon" type="image/x-icon">
 </head>
 
 <body>
@@ -17,19 +19,9 @@
 		<li style="float: right;"><a href="info.php">Информация</a></li>	 
 	</ul> 
 
-	<?php
-		$servername = "localhost";
-		$username = "georgi2003";
-		$password = "georgi123456";
-		$dbname = "tic_tac_toe";
-
-		$conn = new mysqli($servername, $username, $password, $dbname);
-	?>	
-
 <form method="POST" action="#section2"> 	  			
 		<h1>			
-			Вход 
-			<br>
+			Вход <br>			
 		</h1>
 	   	<img src="img/avatar.jpg" style="width: 300px; height:300px"> 
 	   	<br>
@@ -38,31 +30,8 @@
 		  <button onclick="myFunction()" class="dropbtn">Избор на потребителско име</button>
 		  <div id="myDropdown" class="dropdown-content">
 		  	<input type="text" placeholder="Търсене..." id="myInput" onkeyup="filterFunction()">
-		    <?php  		    	 
-		    	if ($conn->connect_error) 
-				{
-				  die("Connection failed: " . $conn->connect_error);
-				}
-
-				include './sql/select.php';
-				$Select = new Select('*', 'account', '1');
-      			$sql = $Select->SELECT_db();
-
-				$result = $conn->query($sql);
-
-				if ($result->num_rows > 0) 
-				{
-					echo "<br>";
-					while($row = $result->fetch_assoc()) 
-					{
-				  		echo '<a>' .  $row["username"] . ' <input type="radio" name="username2" value="' . $row["username"] . '">' . '<br>' . '</a>';
-				  	}
-				} 
-				else 
-				{
-					echo "0 results";
-				}
-				$conn->close();   		
+		    <?php 
+		    	include './login.php'; 		    	 		    	  		
 		    ?>
 		  </div>
 		</div>

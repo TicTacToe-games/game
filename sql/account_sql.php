@@ -5,11 +5,9 @@
 	$log = '';
 	if($_POST['username'] != '')
 	{	
-		$log = 'true';
-		
-		session_start();
-		$username = $_SESSION['username'];
-		$password = $_SESSION["password"];
+		$log = 'true';		
+		$username = $_POST['username'];
+		$password = md5($_POST['password']);
 		
 		$img_url = '';
 
@@ -34,7 +32,7 @@
 		        
 		        $sql2 = $Select_account->SELECT_JOIN('contacts');
 
-		        $sql3 = $Select_account->SELECT_JOIN('result');
+		        $sql3 = $Select_account->SELECT_JOIN('results');
 		        	        
 				$result = $conn->query($sql1);
 				$result2 = $conn->query($sql2);

@@ -1,13 +1,15 @@
 <!DOCTYPE HTML>  
 <html>
 <head>	
+	<title>Морски шах</title>
 	<link rel="stylesheet" href="css/TicTacToe.css"></link>
 	<link rel="stylesheet" href="css/navigation_bar.css"></link>
 	<link rel="stylesheet" href="css/img.css"></link>
+	<link href="./img/icon.jpg" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>	
 	<div class="header">
-	<h1>Профил</h1>
+		<h1>Профил</h1>
 	</div>  
 	<ul>		
 		<li style="float: left;"><a href="index.php" >Вход</a></li>
@@ -38,23 +40,8 @@
 	<div class="main" id="section"></div>
 	<?php		
 		include 'sql/account_sql.php';			
-	?>
-
-	<?php if($log == 'true') : ?>
-	<?php
-		$servername = "localhost";
-		$username = "georgi2003";
-		$password = "georgi123456";
-		$dbname = "tic_tac_toe";
-
-		$conn = new mysqli($servername, $username, $password, $dbname);
-	?>
-
-	<?php
-		if($_POST['username'] != '')
-		{
-			echo '<img id="myImg" style="width: 150px; height:150px" src="' . $img_url . '">';
-		}
+		if($log == 'true') : 		
+			echo '<img id="myImg" style="width: 150px; height:150px" src="' . $img_url . '">';		
 	?>
 
 	<br>
@@ -108,66 +95,8 @@
 	<?php endif ?>
 
 <?php
-	$id = $_POST['id'];
-	if($id!='')
-	{
-		$name = $_POST['name'];
-		$last_name = $_POST['last_name'];
-		$gender = $_POST['gender'];
-		$year_birth = $_POST['year_birth'];
-		$phone = $_POST['phone'];
-		$email = $_POST['email'];
-		$url = $_POST['url'];
-		$username = $_POST['username'];
-		$password1 = md5($_POST['password1']);
-		$password2 = md5($_POST['password2']);
-
-		if($password1 == $password2)
-		{
-			$sql = "UPDATE `user_information` SET `first_name` = '$name',`last_name` = '$last_name',`gender` = '$gender',`date_birth`= $year_birth WHERE id = $id";
-			$sql2 = "UPDATE `contacts` SET `phone` = $phone,`email` = '$email' WHERE id = $id";
-			$sql3 = "UPDATE `account` SET `username` = $username, `password`= $password1 WHERE id = $id";			
-
-			if ($conn->query($sql) === TRUE) 
-			{
-			    echo "Record updated successfully";
-			} 
-			else 
-			{
-			    echo "Error updating record: " . $conn->error;
-			}
-
-			if ($conn->query($sql2) === TRUE) 
-			{
-			    echo "Record updated successfully";
-			} 
-			else 
-			{
-			    echo "Error updating record: " . $conn->error;
-			}
-
-			if ($conn->query($sql3) === TRUE) 
-			{
-			    echo "Record updated successfully";
-			} 
-			else 
-			{
-			    echo "Error updating record: " . $conn->error;
-			}
-
-			$sql4 = "UPDATE `account` SET `url` = '$url' WHERE id = $id";
-			if ($conn->query($sql4) === TRUE) 
-			{
-				echo "Record updated successfully";
-			} 
-			else 
-			{
-			    echo "Error updating record: " . $conn->error;
-			}
-		}
-	}
+	include './sql/update.php';
 ?>
-
 
 </body>
 	

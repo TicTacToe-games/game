@@ -21,7 +21,7 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "UPDATE `result` SET `win`= `win` + 1 WHERE id = $res";
+	$sql = "UPDATE `results` SET `win`= `win` + 1 WHERE id = $res";
 
 	$conn->query($sql);
 	$sql_insert = "INSERT INTO `users_game`(`user1`, `user2`, `date`) VALUES ('$user1', '$user2',current_timestamp())";

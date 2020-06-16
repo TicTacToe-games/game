@@ -7,9 +7,9 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  function Rating_res($result)
+  function Rating_res($results)
   {
-    if($result > 3 && $result <= 6)
+    if($results > 3 && $results <= 6)
     {
       return '
         <span class="fa fa-star checked"></span>
@@ -19,7 +19,7 @@
         <span class="fa fa-star"></span>
       ';
     }
-    else if($result > 6 && $result <= 10)
+    else if($results > 6 && $results <= 10)
     {
       return '
         <span class="fa fa-star checked"></span>
@@ -29,7 +29,7 @@
         <span class="fa fa-star"></span>
       ';
     }
-    else if($result > 10 && $result <= 30)
+    else if($results > 10 && $results <= 30)
     {
       return '
         <span class="fa fa-star checked"></span>
@@ -39,7 +39,7 @@
         <span class="fa fa-star"></span>
       ';
     }
-    else if($result > 30 && $result <= 70)
+    else if($results > 30 && $results <= 70)
     {
       return '
         <span class="fa fa-star checked"></span>
@@ -49,7 +49,7 @@
         <span class="fa fa-star"></span>
       ';
     }
-    else if($result > 70)
+    else if($results > 70)
     {
       return '
         <span class="fa fa-star checked"></span>
@@ -71,19 +71,19 @@
     }
   }
   
-  $Select = new Select('*', 'result', '1');
+  $Select = new Select('*', 'results', '1');
   $sql = $Select->SELECT_JOIN('account');
 
-  $Select = new Select('MAX(`win`), `first_name`, `last_name`', 'result', '1');
+  $Select = new Select('MAX(`win`), `first_name`, `last_name`', 'results', '1');
   $sql2 = $Select->SELECT_JOIN('user_information');
 
-  $result = $conn->query($sql);
+  $results = $conn->query($sql);
   $result2 = $conn->query($sql2);
 
-  if ($result->num_rows > 0) 
+  if ($results->num_rows > 0) 
   {
     echo "<h1>Рейтинг на потребителите</h1>";
-    while($row = $result->fetch_assoc()) 
+    while($row = $results->fetch_assoc()) 
     {         
       echo '<h2>' . $row["username"] . '<br>' . ' Победи: ' . $row["win"] . '<br>' . ' Рейтинг: ' . Rating_res($row["win"]) . "<br>" . '</h2>';
     }
@@ -96,13 +96,12 @@
       $win_game = $row["MAX(`win`)"];
       echo '<br><h1>Най-добър играч</h1>';   
              
-      $sql3 = "SELECT * FROM `result` JOIN `user_information` ON `result`.`id` = `user_information`.`id` WHERE `win` = $win_game";      
+      $sql3 = "SELECT * FROM `results` JOIN `user_information` ON `results`.`id` = `user_information`.`id` WHERE `win` = $win_game";      
       
       $result3 = $conn->query($sql3);
       $user_id = '';  
       while($row = $result3->fetch_assoc()) 
-      {        
-        //$img_url = $row["url"]; 
+      {         
         $user_id = $row["id"];
         echo '<h2>' . $row["first_name"] . ' ' . $row["last_name"] . '<br>' . 'Победи: ' . $row["win"] . '</h2>';
       }

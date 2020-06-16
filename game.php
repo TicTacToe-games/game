@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Морски шах</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Морски шах</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/game_css.css"></link>
 	<link rel="stylesheet" href="css/message.css"></link>
+	<link href="./img/icon.jpg" rel="shortcut icon" type="image/x-icon">
 </head>
 <body> 
+	
 <?php
 	session_start();
 	$user1 = $_SESSION["user1"];
@@ -45,6 +47,7 @@
  	var br1 = 0;
  	var br2 = 0;
  	<?php $br1 = 0; $br2 = 0; ?>
+
  	function selectWinnerBoxes(b1,b2,b3)
  	{
      	b1.classList.add("win");
@@ -55,7 +58,7 @@
      	{
      		br1++;
      		<?php $br1++; ?>
-     		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br1;	    		
+     		turn.innerHTML = " Печели: " + b1.innerHTML + "<br> Победи: " + br1;    		    		
      	}
      	else if(b1.innerHTML === "O")
      	{
@@ -85,7 +88,7 @@
 
 	 	if(box1.innerHTML !== "" && box1.innerHTML === box2.innerHTML && box1.innerHTML === box3.innerHTML)
 	    {
-	        selectWinnerBoxes(box1,box2,box3);
+	        selectWinnerBoxes(box1,box2,box3);       
 	    }
 	         
 	 	if(box4.innerHTML !== "" && box4.innerHTML === box5.innerHTML && box4.innerHTML === box6.innerHTML)
@@ -121,8 +124,7 @@
 	 	if(box3.innerHTML !== "" && box3.innerHTML === box5.innerHTML && box3.innerHTML === box7.innerHTML)
 	    {
 	    	selectWinnerBoxes(box3,box5,box7);
-	    }
-             
+	    }           
     }
 
 	for(var i = 0; i < boxes.length; i++)
@@ -160,7 +162,7 @@
    			turn.innerHTML = "Играй";
    			turn.style.fontSize = "25px";
     	}
-    }
+    } 
 </script>
 
 <div class="alert info">
