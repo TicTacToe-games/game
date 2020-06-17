@@ -24,7 +24,7 @@
 	$sql = "UPDATE `results` SET `win`= `win` + 1 WHERE id = $res";
 
 	$conn->query($sql);
-	$sql_insert = "INSERT INTO `users_game`(`user1`, `user2`, `date`) VALUES ('$user1', '$user2',current_timestamp())";
+	$sql_insert = "INSERT INTO `users_game`(`user1`, `user2`, `date`, `wins_user1`, `wins_user2`) VALUES ('$user1', '$user2',current_timestamp(), $br1, $br2)";
 	$conn->query($sql_insert);
 	$conn->close();
 ?>

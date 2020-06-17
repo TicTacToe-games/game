@@ -9,7 +9,7 @@
 	  die("Connection failed: " . $conn->connect_error);
 	}
 	
-  	$Select = new Select('*', 'account', '1');
+  	$Select = new Select('*', 'accounts', '1');
   	$sql = $Select->SELECT_db();
 
 	$result = $conn->query($sql);
@@ -25,5 +25,6 @@
 	{
 	  echo "0 results";
 	}
+	
 	$conn->close();
 ?>

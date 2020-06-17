@@ -23,9 +23,10 @@
 		    die("Connection failed: " . $conn->connect_error);
 		}
 		
-		$sql = "INSERT INTO `user_information`(`first_name`, `last_name`, `gender`, `date_birth`) VALUES ('$name', '$last_name','$gender', $year_birth)";
-		$sql1 = "INSERT INTO `contacts`(`phone`, `email`) VALUES ($phone, '$email')";
-		$sql2 = "INSERT INTO `account`(`username`, `url`, `password`) VALUES ('$username', 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png', '$password1')";
+		$sql = "INSERT INTO `user_informations`(`first_name`, `last_name`, `gender`, `date_birth`) VALUES ('$name', '$last_name','$gender', $year_birth)";
+		$sql1 = "INSERT INTO `contacts`(`phone`, `email`) VALUES ('$phone', '$email')";
+		$sql2 = "INSERT INTO `accounts`(`username`, `password`) VALUES ('$username', '$password1')";
+		
 		if($name != '')
 		{
 			$sql3 = "INSERT INTO `results`(`win`) VALUES (0)";

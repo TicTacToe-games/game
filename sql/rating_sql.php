@@ -72,10 +72,10 @@
   }
   
   $Select = new Select('*', 'results', '1');
-  $sql = $Select->SELECT_JOIN('account');
+  $sql = $Select->SELECT_JOIN('accounts');
 
   $Select = new Select('MAX(`win`), `first_name`, `last_name`', 'results', '1');
-  $sql2 = $Select->SELECT_JOIN('user_information');
+  $sql2 = $Select->SELECT_JOIN('user_informations');
 
   $results = $conn->query($sql);
   $result2 = $conn->query($sql2);
@@ -96,7 +96,7 @@
       $win_game = $row["MAX(`win`)"];
       echo '<br><h1>Най-добър играч</h1>';   
              
-      $sql3 = "SELECT * FROM `results` JOIN `user_information` ON `results`.`id` = `user_information`.`id` WHERE `win` = $win_game";      
+      $sql3 = "SELECT * FROM `results` JOIN `user_informations` ON `results`.`id` = `user_informations`.`id` WHERE `win` = $win_game";      
       
       $result3 = $conn->query($sql3);
       $user_id = '';  
@@ -106,7 +106,7 @@
         echo '<h2>' . $row["first_name"] . ' ' . $row["last_name"] . '<br>' . 'Победи: ' . $row["win"] . '</h2>';
       }
 
-      $sql4 = "SELECT `url` FROM `account` WHERE `id` = $user_id";
+      $sql4 = "SELECT `url` FROM `accounts` WHERE `id` = $user_id";
       $result4 = $conn->query($sql4);
 
       while($row = $result4->fetch_assoc()) 

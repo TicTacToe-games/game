@@ -16,8 +16,8 @@
 		    die("Connection failed: " . $conn->connect_error);
 		}
 
-		$Select_log = new Select('`username`, `password`', 'account', "`username`= '$username' AND `password` = '$password'");
-	    $sql = $Select_log->SELECT_JOIN('user_information');
+		$Select_log = new Select('`username`, `password`', 'accounts', "`username`= '$username' AND `password` = '$password'");
+	    $sql = $Select_log->SELECT_JOIN('user_informations');
 
 		$result = $conn->query($sql);
 
@@ -27,8 +27,8 @@
 		    {
 		        echo "<br><br><h1>Добре дошли: <i>" . $row["username"] . "<br></i></h1>";
 		       
-				$Select_account = new Select('*', 'account', "`username`= '$username' AND `password` = '$password'");
-	      		$sql1 = $Select_account->SELECT_JOIN('user_information');	        
+				$Select_account = new Select('*', 'accounts', "`username`= '$username' AND `password` = '$password'");
+	      		$sql1 = $Select_account->SELECT_JOIN('user_informations');	        
 		        
 		        $sql2 = $Select_account->SELECT_JOIN('contacts');
 
@@ -70,8 +70,10 @@
 		} 
 		else 
 		{
-		    echo "0 results";
+		    echo "<h1>Няма намерени резултати!!!</h1>";
+		    $log = 'false';
 		}		
+
 		$conn->close();
 	}
 ?>

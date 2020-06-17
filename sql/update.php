@@ -21,9 +21,9 @@
 
 		if($password1 == $password2)
 		{
-			$sql = "UPDATE `user_information` SET `first_name` = '$name',`last_name` = '$last_name',`gender` = '$gender',`date_birth`= $year_birth WHERE id = $id";
+			$sql = "UPDATE `user_informations` SET `first_name` = '$name',`last_name` = '$last_name',`gender` = '$gender',`date_birth`= $year_birth WHERE id = $id";
 			$sql2 = "UPDATE `contacts` SET `phone` = $phone,`email` = '$email' WHERE id = $id";
-			$sql3 = "UPDATE `account` SET `username` = $username, `password`= $password1 WHERE id = $id";			
+			$sql3 = "UPDATE `accounts` SET `username` = $username, `password`= $password1 WHERE id = $id";			
 
 			if ($conn->query($sql) === TRUE) 
 			{
@@ -52,7 +52,7 @@
 			    echo "Error updating record: " . $conn->error;
 			}
 
-			$sql4 = "UPDATE `account` SET `url` = '$url' WHERE id = $id";
+			$sql4 = "UPDATE `accounts` SET `url` = '$url' WHERE id = $id";
 			if ($conn->query($sql4) === TRUE) 
 			{
 				echo "Record updated successfully";

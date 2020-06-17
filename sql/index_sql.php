@@ -1,5 +1,3 @@
-<!DOCTYPE HTML>  
-<html>
 <?php
 	session_start();
 
@@ -13,6 +11,7 @@
 	include './sql/database.php';
 
 	$username2 = $_POST['username2'];
+	
 	if($username2 != '')
 	{
 		$username = $_POST['username'];
@@ -26,8 +25,8 @@
 		    die("Connection failed: " . $conn->connect_error);
 		}
 
-		$sql = "SELECT * FROM `account` WHERE `username` = '$username' AND `password` = '$password'";
-		$sql2 = "SELECT * FROM `account` WHERE `username` = '$username2'";		
+		$sql = "SELECT * FROM `accounts` WHERE `username` = '$username' AND `password` = '$password'";
+		$sql2 = "SELECT * FROM `accounts` WHERE `username` = '$username2'";		
 
 		$result = $conn->query($sql);
 		$result2 = $conn->query($sql2);
@@ -53,26 +52,17 @@
 		    while($row = $result2->fetch_assoc()) 
 		    {
 		        $_SESSION["user2"] = $row["id"];	       		      		        
-				/*---*/
 		    }
-		} 
-		else 
-		{
-		    echo "";		    
 		}
 	}
 	else
 	{
 		echo 'Не сте въвели нищо!!!<br><br><br>';
 	}
+
+	echo '<div class="main" id="section2"></div>';
 ?>
-
-<div class="main" id="section2">
-</div>
-
-<link rel="stylesheet" href="css/img.css"></link>
 <img id="myImg" style="width: 150px; height:150px" alt="<?php echo $username ?>" src="<?php echo $img ?>">
-
 <?php
 	if($username2 != '')
 	{
@@ -82,13 +72,3 @@
 		}
 	}
 ?>
-
-<div id="myModal" class="modal">
-  	<span class="close">&times;</span>
-  	<img class="modal-content" id="img01">
-  	<div id="caption"></div>
-</div>
-
-<script src="js/img.js"></script>
-
-</html>
